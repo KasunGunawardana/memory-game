@@ -1,3 +1,4 @@
+// all the resources
 const cardArray = [
   {
     name: "pizza",
@@ -49,14 +50,25 @@ const cardArray = [
   }
 ];
 
+// sord the array randomly
 cardArray.sort(() => 0.5 - Math.random());
 
+// getting the grid element
 const grid = document.getElementById("grid");
-let choosenCards = [];
-let choosenCardIds = [];
-const result = [];
+
+// getting the result span to display the score
 const resultDisplay = document.getElementById("result");
 
+// choosen cards will store in this array
+let choosenCards = [];
+
+// choosen cards ids will store in this array
+let choosenCardIds = [];
+
+// result will store in this array
+const result = [];
+
+// creating the board function
 const createBoard = () => {
   for (let i = 0; i < cardArray.length; i++) {
     const card = document.createElement("img");
@@ -67,8 +79,10 @@ const createBoard = () => {
   }
 };
 
+// initializing the game
 createBoard();
 
+// when click happens
 function focusClick() {
   const cardId = this.getAttribute("data-id");
   choosenCards.push(cardArray[cardId].name);
@@ -79,6 +93,7 @@ function focusClick() {
   }
 }
 
+// check if matches
 function checkMatch() {
   const cards = document.querySelectorAll("#grid img");
   let optionOne = choosenCardIds[0];
